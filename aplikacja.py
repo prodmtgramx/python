@@ -1,9 +1,11 @@
 from flask import Flask
+import json
+import predykcja as pred
 app = Flask(__name__)
 
-@app.route("/")
+@app.route("/predict")
 def hello():
-     return "Hello World!"
+    return json.dumps(pred.predict(500))
 
 if __name__ == "__main__":
-     app.run()
+    app.run(debug=True)
